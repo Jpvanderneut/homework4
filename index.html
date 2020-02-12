@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Oscar Quiz</title>
+</head>
+<h1>Oscar Best Film Quiz</h1>
+<body>
+    <div id="oscarQuiz">
+        <h4 id="question"></h4>
+        <input type="radio" id="a" name="options" value="a">
+        <label id="aa" for="a"></label><br>
+        <input type="radio" id="b" name="options" value="b">
+        <label id="bb" for="b"></label><br>
+        <input type="radio" id="c" name="options" value="c">
+        <label id="cc" for="c"></label><br>
+        <input type="radio" id="d" name="options" value="d">
+        <label id="dd" for="d"></label><br>
+        <input type="button" id="start" onclick="StartQuiz();" value="Begin Quiz">
+        <input type="button" id="next" onclick="RunQuiz();" value="Check Answer">
+    </div>
+
+
+
+    <div id="results"></div>
+
+    <script>
+        var x=0;
+        var score = 0;
+            var oscarQuestions = [
+        {
+            question : "What Movie won the Oscar for best film of 2019?",
+            a:"Parasite",
+            b:"Ford vs Ferrari",
+            c:"Irishman",
+            d:"Joker",
+            correctAnswer: 0
+        },
+
+        {
+            question : "What Movie won the Oscar for best film of 2018?",
+            a:"Green Book",
+            b:"Bohemian Rhapsody",
+            c:"Roma",
+            d:"Black Panther",
+            correctAnswer: 0
+        },
+    
+        {
+            question : "What Movie won the Oscar for best film of 2017?",
+            a:"Dunkirk",
+            b:"The Shape of Water",
+            c:"Darkest Hour",
+            d:"Coco",
+            correctAnswer: 1
+    },
+
+    {
+        question : "What Movie won the Oscar for best film of 2016?",
+            a:"Lala Land",
+            b:"Hacksaw Ridge",
+            c:"Moon Light",
+            d:"Arrival",
+        correctAnswer: 2
+    },
+
+    {
+        question : "What Movie won the Oscar for best film of 2015?",
+        a:"Room",
+        b:"The Big Short",
+        c:"Ex Machina",
+        d:"Spotlight",
+        correctAnswer: 3
+
+    }
+]
+
+    function StartQuiz() {
+        x=0;
+        document.getElementById("question").innerHTML = oscarQuestions[x]["question"];
+        document.getElementById("aa").innerHTML = oscarQuestions[x]["a"];
+        document.getElementById("bb").innerHTML = oscarQuestions[x]["b"];
+        document.getElementById("cc").innerHTML = oscarQuestions[x]["c"];
+        document.getElementById("dd").innerHTML = oscarQuestions[x]["d"];
+
+        document.getElementById("start").disabled = true;
+    }
+
+    function RunQuiz() {
+
+    var answer = document.getElementsByName('options');
+
+
+  
+
+        
+    for(i = 0; i < answer.length; i++) { 
+            if(answer[i].checked && i == oscarQuestions[x]["correctAnswer"]){
+                alert("correct");
+                score = score + 1;
+            }
+            
+        } 
+    
+    document.getElementById("results").innerHTML = "You have " + score + " correct out of " +  oscarQuestions.length;
+    x++;
+    if(x >= oscarQuestions.length)
+    {
+        document.getElementById("results").innerHTML = "Your final score is " + score + " correct out of " +  oscarQuestions.length;
+        document.getElementById("next").disabled = true;
+    }
+    else{
+    document.getElementById("question").innerHTML = oscarQuestions[x]["question"];
+    document.getElementById("aa").innerHTML = oscarQuestions[x]["a"];
+    document.getElementById("bb").innerHTML = oscarQuestions[x]["b"];
+    document.getElementById("cc").innerHTML = oscarQuestions[x]["c"];
+    document.getElementById("dd").innerHTML = oscarQuestions[x]["d"];
+    }
+    
+ }
+
+
+
+
+
+</script>
+    
+</body>
+</html>
